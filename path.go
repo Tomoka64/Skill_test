@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"go/ast"
 	"go/build"
 	"go/parser"
@@ -17,10 +18,10 @@ func importPkg(fname, dir string) (*build.Package, error) {
 		return &build.Package{}, err
 	}
 	if p.BinaryOnly {
-		return &build.Package{}, nil
+		return &build.Package{}, errors.New("it consists of binary only")
 	}
 	if p.IsCommand() {
-		return &build.Package{}, nil
+		return &build.Package{}, errors.New("the package is considered a command to be installed (not just a library)")
 	}
 	return p, nil
 }
