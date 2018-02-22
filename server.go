@@ -39,7 +39,7 @@ func (s *Server) Run() error {
 	fmt.Println("connected to localhost: 8000")
 	s.httphandler()
 	if err := s.srv.ListenAndServe(); err != nil {
-		log.Fatal(err)
+		return err
 	}
 	return nil
 }
