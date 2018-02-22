@@ -5,7 +5,6 @@ import (
 	"testing"
 )
 
-//
 func TestImportPkg(t *testing.T) {
 
 	dir := getDir()

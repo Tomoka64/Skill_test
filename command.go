@@ -9,6 +9,7 @@ import (
 	"github.com/fatih/color"
 )
 
+//CommandLine is for the command-tool usage. gets File and pattern from the user and holds data to return accordingly.
 type CommandLine struct {
 	Path    string
 	File    string
@@ -28,37 +29,39 @@ func newCommandLine(items ...string) (another, error) {
 	}, nil
 }
 
-func (r *CommandLine) Run() error {
-	if err := r.Extract(); err != nil {
+//Run will writes data into terminal and implements SaveToFile so that
+// the stored data can be used when the usage 'history' has been selected.
+func (c *CommandLine) Run() error {
+	if err := c.Extract(); err != nil {
 		return err
 	}
 	fmt.Println("Directory\tKeyword\t\tLine\tDetail")
-	for _, v := range r.datas {
+	for _, v := range c.datas {
 		color.Yellow("%v\t%v\t%d\t%v\n", v.Filename, v.Keyword, v.Line, v.Detail)
 		SaveToFile(&v)
 	}
 	return nil
 }
 
-func (r *CommandLine) CLWord(fname string) error {
+func (c *CommandLine) CLWord(fname string) error {
 	datas, err := extractWord(
-		fname, r.Pattern, r.datas)
+		fname, c.Pattern, c.datas)
 	if err != nil {
 		return err
 	}
-	r.datas = datas
+	c.datas = datas
 	return nil
 }
 
-func (r *CommandLine) Extract() error {
-	p, err := importPkg(r.File, r.Path)
+func (c *CommandLine) Extract() error {
+	p, err := importPkg(c.File, c.Path)
 	if err != nil {
 		return err
 	}
 
 	for _, f := range p.GoFiles {
 		fname := filepath.Join(p.Dir, f)
-		err = r.CLWord(fname)
+		err = c.CLWord(fname)
 		if err != nil {
 			return err
 		}

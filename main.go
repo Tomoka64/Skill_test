@@ -9,6 +9,11 @@ type another interface {
 	Run() error
 }
 
+//New determines the usage that user wants to use.
+//there are 3 usages; command-tool purposed usage(to simply search the selected word in selected package),
+//'localhost' usage (to make server-mode possible), and  'history' usage(to show all the searched history).
+//if the user's request does not fit any of the usage above, it goes to newHelper(to show users
+// the usage of this command tool)
 func New(args []string) (another, error) {
 	var f func(item ...string) (another, error)
 

@@ -10,6 +10,7 @@ import (
 	"github.com/Tomoka64/final/model"
 )
 
+//importPkg imports a path to a directory where the fname is located.
 func importPkg(fname, dir string) (*build.Package, error) {
 	p, err := build.Import(fname, dir, build.ImportComment)
 	if err != nil {
@@ -24,6 +25,8 @@ func importPkg(fname, dir string) (*build.Package, error) {
 	return p, nil
 }
 
+//extractWord gets filename, pattern and looks for puts the found results
+//into data.
 func extractWord(fname, pattern string, datas []model.Result) ([]model.Result, error) {
 	fset := token.NewFileSet()
 	f, err := parser.ParseFile(fset, fname, nil, parser.ParseComments)

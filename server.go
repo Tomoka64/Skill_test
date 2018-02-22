@@ -14,6 +14,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
+//Server consists of http.Server and template.
 type Server struct {
 	srv *http.Server
 	tpl template.Template
@@ -33,42 +34,47 @@ func newServer(items ...string) (another, error) {
 	}, nil
 }
 
-func (r *Server) Run() error {
+//Run runs the server, using httphandler.
+func (s *Server) Run() error {
 	fmt.Println("connected to localhost: 8000")
-	r.httphandler()
-	if err := r.srv.ListenAndServe(); err != nil {
+	s.httphandler()
+	if err := s.srv.ListenAndServe(); err != nil {
 		log.Fatal(err)
 	}
 	return nil
 }
 
-func (r *Server) httphandler() {
+//httphandler implements gorilla mux.
+func (s *Server) httphandler() {
 	router := mux.NewRouter()
 	router.NotFoundHandler = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("Note Found 404\n"))
+		w.Write([]byte("Not Found 404\n"))
 	})
-	router.HandleFunc("/", r.Index).Methods("GET")
-	router.HandleFunc("/search", r.Search).Methods("GET")
-	router.HandleFunc("/search/{directory}/{keyword}", r.SearchProcess).Methods("GET")
+	router.HandleFunc("/", s.Index).Methods("GET")
+	router.HandleFunc("/search", s.Search).Methods("GET")
+	router.HandleFunc("/search/{directory}/{keyword}", s.SearchProcess).Methods("GET")
 	router.Handle("/favicon.ico", http.NotFoundHandler())
 
-	r.srv.Handler = router
+	s.srv.Handler = router
 }
 
+//Search will serve Template index.gohtml
 func (s *Server) Search(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html")
 	w.WriteHeader(http.StatusOK)
 	s.tpl.ExecuteTemplate(w, "index.gohtml", nil)
 }
 
+//Index will redirect to /search when the http request is "/"
 func (s *Server) Index(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html")
 	http.Redirect(w, r, "/search", 303)
 }
 
+//SearchProcess gets parameters from URL (/search/{directory}/{keyword}) and
+//searches the package and word accordingly and writes it in json format.
 func (s *Server) SearchProcess(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-	// color.Red("======Request from http======")
 
 	dir, err := os.Getwd()
 	if err != nil {

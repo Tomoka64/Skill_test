@@ -12,8 +12,10 @@ import (
 	"github.com/Tomoka64/final/model"
 )
 
+//DBPath is a path to data file. all the data will be saved in json format
 const DBPath = "config/data.json"
 
+//History is slice of model.Result
 type History struct {
 	datas []model.Result
 }
@@ -27,6 +29,8 @@ func newHistory(items ...string) (another, error) {
 		datas: datas,
 	}, nil
 }
+
+//Run writes the history data into terminal
 func (r *History) Run() error {
 	for _, data := range r.datas {
 		fmt.Printf("%v\t%v\t%d\t%v\n", data.Filename, data.Keyword, data.Line, data.Detail)
@@ -34,6 +38,7 @@ func (r *History) Run() error {
 	return nil
 }
 
+//FileGetContents reads a file and gives back in the format of slice of bytes
 func FileGetContents(filename string) []byte {
 	contents, err := ioutil.ReadFile(filename)
 	if err != nil {
@@ -42,7 +47,7 @@ func FileGetContents(filename string) []byte {
 	return contents
 }
 
-//ListAll shows all the search history in terminal
+//ListAll decodes all the Data from data file and shows it in terminal
 func ListAll() ([]model.Result, error) {
 	var datas []model.Result
 	contents := FileGetContents(DBPath)

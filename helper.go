@@ -5,6 +5,7 @@ import (
 	"os"
 )
 
+//Helper consists of a message to return when the request from user is not what is expected.
 type Helper struct {
 	message string
 }
@@ -15,6 +16,7 @@ func newHelper(items ...string) (another, error) {
 	}, nil
 }
 
+//Run will write the Helper's message to terminal
 func (r *Helper) Run() error {
 	fmt.Fprintln(os.Stdout, r.message)
 	os.Exit(1)
