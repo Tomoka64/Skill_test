@@ -18,6 +18,7 @@ import (
 type Server struct {
 	srv *http.Server
 	tpl template.Template
+	dir string
 }
 
 func newServer(items ...string) (Driver, error) {
@@ -28,9 +29,14 @@ func newServer(items ...string) (Driver, error) {
 		WriteTimeout: 15 * time.Second,
 		ReadTimeout:  15 * time.Second,
 	}
+	dir, err := os.Getwd()
+	if err != nil {
+		return &Server{}, err
+	}
 	return &Server{
 		srv: srv,
 		tpl: *template.Must(template.ParseGlob("template/*")),
+		dir: dir,
 	}, nil
 }
 
@@ -39,7 +45,7 @@ func (s *Server) Run() error {
 	fmt.Println("connected to localhost: 8000")
 	s.httphandler()
 	if err := s.srv.ListenAndServe(); err != nil {
-		return err
+		log.Fatal(err)
 	}
 	return nil
 }
@@ -76,14 +82,9 @@ func (s *Server) Index(w http.ResponseWriter, r *http.Request) {
 func (s *Server) SearchProcess(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
-	dir, err := os.Getwd()
-	if err != nil {
-		log.Fatalln(err)
-	}
-
 	params := mux.Vars(r)
 	path := params["directory"]
-	p, err := importPkg(path, dir)
+	p, err := importPkg(path, s.dir)
 	if err != nil {
 		log.Fatalln(err)
 	}
