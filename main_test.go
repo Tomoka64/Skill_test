@@ -13,7 +13,7 @@ func TestMain(m *testing.M) {
 func TestNew(t *testing.T) {
 	tests := []struct {
 		args []string
-		ans  another
+		ans  Driver
 	}{
 		{
 			args: []string{"localhost"},

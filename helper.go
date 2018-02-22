@@ -10,7 +10,7 @@ type Helper struct {
 	message string
 }
 
-func newHelper(items ...string) (another, error) {
+func newHelper(items ...string) (Driver, error) {
 	return &Helper{
 		fmt.Sprintf("usage1: %s <directory> <keyword> (e.g. fmt TODO)\nusage2: localhost (to connect with localhost)\nusage3: history (to see your search history)", items[0]),
 	}, nil

@@ -20,7 +20,7 @@ type History struct {
 	datas []model.Result
 }
 
-func newHistory(items ...string) (another, error) {
+func newHistory(items ...string) (Driver, error) {
 	datas, err := ListAll()
 	if err != nil {
 		return &History{}, err

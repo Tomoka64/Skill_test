@@ -20,7 +20,7 @@ type Server struct {
 	tpl template.Template
 }
 
-func newServer(items ...string) (another, error) {
+func newServer(items ...string) (Driver, error) {
 
 	hostname := "127.0.0.1:8000"
 	srv := &http.Server{

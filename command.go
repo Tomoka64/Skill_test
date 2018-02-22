@@ -17,7 +17,7 @@ type CommandLine struct {
 	datas   []model.Result
 }
 
-func newCommandLine(items ...string) (another, error) {
+func newCommandLine(items ...string) (Driver, error) {
 	dir, err := os.Getwd()
 	if err != nil {
 		return &CommandLine{}, err

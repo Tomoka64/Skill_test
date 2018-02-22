@@ -5,7 +5,7 @@ import (
 	"os"
 )
 
-type another interface {
+type Driver interface {
 	Run() error
 }
 
@@ -14,8 +14,8 @@ type another interface {
 //'localhost' usage (to make server-mode possible), and  'history' usage(to show all the searched history).
 //if the user's request does not fit any of the usage above, it goes to newHelper(to show users
 // the usage of this command tool)
-func New(args []string) (another, error) {
-	var f func(item ...string) (another, error)
+func New(args []string) (Driver, error) {
+	var f func(item ...string) (Driver, error)
 
 	switch len(args) {
 	case 1:

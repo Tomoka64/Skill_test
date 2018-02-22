@@ -69,6 +69,8 @@ func TestNewCommandLine(t *testing.T) {
 
 }
 
+//getDir gets current directory and returns it.
+//this function is only used in Test Functions.
 func getDir() string {
 	dir, err := os.Getwd()
 	if err != nil {
