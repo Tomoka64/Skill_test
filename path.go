@@ -25,8 +25,8 @@ func importPkg(fname, dir string) (*build.Package, error) {
 	return p, nil
 }
 
-//extractWord gets filename, pattern and looks for puts the found results
-//into data.
+//extractWord gets filename and pattern and looks for the result accordingly and puts the found results
+//into datas([]model.Result) and returns it.
 func extractWord(fname, pattern string, datas []model.Result) ([]model.Result, error) {
 	fset := token.NewFileSet()
 	f, err := parser.ParseFile(fset, fname, nil, parser.ParseComments)
