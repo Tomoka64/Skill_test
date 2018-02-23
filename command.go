@@ -5,7 +5,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/Tomoka64/go-skilltest"
+	"github.com/Tomoka64/go-skilltest/model"
 	"github.com/fatih/color"
 )
 
