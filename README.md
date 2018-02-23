@@ -56,7 +56,6 @@ type Result struct {
 	Line     int    `json:"line"`
 	Detail   string `json:"detail"`
 }
-
 ```
 
 ## Author
