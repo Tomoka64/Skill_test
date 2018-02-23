@@ -9,7 +9,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/Tomoka64/final/model"
+	"github.com/Tomoka64/go-skilltest/model"
 )
 
 //DBPath is a path to data file. all the data will be saved in json format
