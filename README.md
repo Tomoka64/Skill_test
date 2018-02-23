@@ -44,6 +44,13 @@ type Result struct {
 }
 ```
 
+### 工夫点
+
+mainをなるべく短く簡潔に見せるためにfunc Newを作り、さらにvar f func(item ...string)を作ったことでcase内をより簡潔化させた。
+テストをしやすくするために一つ一つのファンクションをなるべく短くした。
+Driver interface{}を作ることで全体的にコンパクトにパターンを感じられるコードに仕上げた。
+
+
 ## Author
 
 Tomoka Yokomizo
