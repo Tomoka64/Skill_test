@@ -10,7 +10,7 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/Tomoka64/go-skilltest"
+	"github.com/Tomoka64/go-skilltest/model"
 	"github.com/gorilla/mux"
 )
 
