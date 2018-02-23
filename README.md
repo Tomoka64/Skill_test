@@ -2,13 +2,52 @@
 
 This repository is a command tool for searching a word from go-package.
 
+## Getting Started
+
+
+### Prerequisites
+
+Install
+
+```
+go get github.com/gorilla/mux
+```
+```
+go get github.com/stretchr/testify
+```
+```
+go get github.com/fatih/color
+```
+### Installing
+
+
+```
+go get github.com/Tomoka64/Skill_test
+```
+### Usage
+
 Usage:
 
-Usage1: <package name> <word>  e.g) fmt TODO
+Usage1 <package name> <word>  e.g) fmt TODO
   
+```
+fmt TODO
+```
+
 Usage2: localhost
+
+```
+localhost
+```
 
 Usage3: history
 
-## License & Copyright
+```
+history
+```
+
+
+## Author
+
 Tomoka Yokomizo
+
