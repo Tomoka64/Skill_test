@@ -6,19 +6,6 @@ This repository is a command tool for searching a word from go-package. This pro
 ## Getting Started
 
 
-### Prerequisites
-
-Install
-
-```
-go get github.com/gorilla/mux
-```
-```
-go get github.com/stretchr/testify
-```
-```
-go get github.com/fatih/color
-```
 ### Installing
 
 
