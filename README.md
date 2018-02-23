@@ -9,7 +9,7 @@ This repository presents a command tool for searching a word from go-package. Th
 
 
 ```
-go get github.com/Tomoka64/Skill_test
+go get github.com/Tomoka64/go-skilltest
 ```
 ### Usage
 
