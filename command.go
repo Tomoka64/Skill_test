@@ -43,6 +43,7 @@ func (c *CommandLine) Run() error {
 	return nil
 }
 
+//CLWord extracts the result according to the given filaname and pattern and puts it into datas.
 func (c *CommandLine) CLWord(fname string) error {
 	datas, err := extractWord(
 		fname, c.Pattern, c.datas)
@@ -53,6 +54,7 @@ func (c *CommandLine) CLWord(fname string) error {
 	return nil
 }
 
+//Extract finds the right path to the expected file and implements CLWord
 func (c *CommandLine) Extract() error {
 	p, err := importPkg(c.File, c.Path)
 	if err != nil {
