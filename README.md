@@ -29,7 +29,7 @@ go get github.com/Tomoka64/Skill_test
 
 Usage:
 
-Usage1: <package name> <word>  e.g.) fmt TODO
+Usage1: <<package name>> <<word>>  e.g.) fmt TODO
   
 ```
 fmt TODO
