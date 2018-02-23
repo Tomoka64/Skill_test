@@ -20,11 +20,13 @@ go get github.com/fatih/color
 
 
 ### Installing
-
-
+```go get github.com/Tomoka64/go-skilltest
 ```
-go get github.com/Tomoka64/go-skilltest
 ```
+make install-dep make deps
+```
+を実行してください
+
 ### Usage
 
 Usage1: 'package-name' 'word' 
