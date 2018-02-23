@@ -47,6 +47,17 @@ Usage3: history
 history
 ```
 
+### Basic Model
+
+```
+type Result struct {
+	Filename string `json:"filename"`
+	Keyword  string `json:"keyword"`
+	Line     int    `json:"line"`
+	Detail   string `json:"detail"`
+}
+
+```
 
 ## Author
 
