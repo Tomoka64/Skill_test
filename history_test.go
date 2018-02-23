@@ -4,7 +4,7 @@ import (
 	"io/ioutil"
 	"testing"
 
-	"github.com/Tomoka64/final/model"
+	"github.com/Tomoka64/go-skilltest/model"
 	"github.com/stretchr/testify/assert"
 )
 
