@@ -45,8 +45,7 @@ func (c *CommandLine) Run() error {
 
 //CLWord extracts the result according to the given filaname and pattern and puts it into datas.
 func (c *CommandLine) CLWord(fname string) error {
-	datas, err := extractWord(
-		fname, c.Pattern, c.datas)
+	datas, err := extractWord(fname, c.Pattern, c.datas)
 	if err != nil {
 		return err
 	}
