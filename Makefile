@@ -9,7 +9,7 @@ deps-update: install-dep
 		dep ensure -update
 
 build:
-		go build -ldflags="-w -s" -o bin/go-skilltest \
+		go build -ldflags="-w -s" -o bin/go-pkg-seeker \
 			main.go    \
 			path.go    \
 			helper.go  \
