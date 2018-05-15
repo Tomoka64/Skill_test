@@ -8,7 +8,7 @@ import (
 	"go/token"
 	"strings"
 
-	"github.com/Tomoka64/go-skilltest/model"
+	"github.com/Tomoka64/go-pkg-seeker/model"
 )
 
 //importPkg imports a path to a directory where the fname is located.

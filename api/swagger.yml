@@ -1,6 +1,6 @@
 swagger: "2.0"
 info:
-  title: "Go package searcher"
+  title: "Go package seeker"
   version: "1.0.0"
   description: "指定したGoのパッケージから文字列を検索し、標準出力に出し、サーバモードも提供できるコマンドツール"
   contact:
